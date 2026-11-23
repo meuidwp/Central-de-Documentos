@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Central de Documentos – CRAS",
   "short_name": "Central",
-  "description": "Certidão, Guia de Remessa, Justificativa de Ponto e RMA reunidos em um só aplicativo.",
+  "description": "Certidão, Guia de Remessa, Justificativa de Ponto, RMA, Declaração de Comparecimento e Frequência PEAD reunidos em um só aplicativo.",
   "lang": "pt-BR",
   "start_url": "./",
   "scope": "./",
@@ -120,6 +120,30 @@
       "icons": [
         {
           "src": "icons/app-rma.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Declaração de Comparecimento",
+      "short_name": "Comparecimento",
+      "url": "apps/atestado-de-comparecimento/",
+      "icons": [
+        {
+          "src": "icons/app-atestado-de-comparecimento.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Frequência PEAD",
+      "short_name": "Frequência",
+      "url": "apps/frequencia-pead/",
+      "icons": [
+        {
+          "src": "icons/app-frequencia-pead.png",
           "sizes": "192x192",
           "type": "image/png"
         }

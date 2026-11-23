@@ -1,6 +1,6 @@
 # Central de Documentos – CRAS
 
-Os quatro aplicativos em um só PWA, com um menu inicial:
+Os seis aplicativos em um só PWA, com um menu inicial:
 
 | App | Pasta |
 |---|---|
@@ -8,6 +8,8 @@ Os quatro aplicativos em um só PWA, com um menu inicial:
 | Guia de Remessa / Termo de Entrega | `apps/guia-de-remessa/` |
 | Justificativa de Ponto | `apps/justificativa-de-ponto/` |
 | RMA – Soma Mensal | `apps/rma/` |
+| Declaração de Comparecimento | `apps/atestado-de-comparecimento/` |
+| Frequência PEAD | `apps/frequencia-pead/` |
 
 ## Como publicar no GitHub Pages
 1. Crie um repositório novo (ex.: `central`) e envie **todo o conteúdo desta pasta** para a raiz dele (o `index.html` precisa ficar na raiz).
@@ -18,6 +20,7 @@ Os quatro aplicativos em um só PWA, com um menu inicial:
 Altere o arquivo do app desejado e, em `sw.js`, aumente o número de `VERSION` (`v1` → `v2`) para os aparelhos baixarem a nova versão.
 
 ## Observações
+- A Frequência PEAD lê os feriados fixos de `apps/frequencia-pead/holidays.json`; locais e nomes ficam na constante `LOCAIS`, no início de `apps/frequencia-pead/app.js`.
 - Cada app guarda os dados no próprio navegador (localStorage), com chaves diferentes, então não se misturam.
 - A Justificativa de Ponto baixa as bibliotecas de OCR da internet na primeira leitura de PDF digitalizado; depois ficam em cache.
 - Os `manifest` e `sw.js` individuais de cada app foram removidos: agora existe um só, na raiz.

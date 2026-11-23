@@ -1,10 +1,22 @@
 /* Service worker único da Central de Documentos.
    Ao publicar uma nova versão, mude o número em VERSION para renovar o cache nos aparelhos. */
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE = "central-" + VERSION;
-const RUNTIME = "central-runtime"; // bibliotecas de OCR (CDN) da Justificativa de Ponto, guardadas na 1ª leitura
+const RUNTIME = "central-runtime"; // bibliotecas de OCR (Justificativa de Ponto) e fontes do Google (Declaração de Comparecimento), guardadas na 1ª leitura
 const PRECACHE = [
   "./",
+  "./apps/atestado-de-comparecimento/assets/cabecalho.png",
+  "./apps/atestado-de-comparecimento/assets/rodape.png",
+  "./apps/atestado-de-comparecimento/favicon.ico",
+  "./apps/atestado-de-comparecimento/favicon.svg",
+  "./apps/atestado-de-comparecimento/index.html",
+  "./apps/frequencia-pead/app.js",
+  "./apps/frequencia-pead/assets/cabecalho.png",
+  "./apps/frequencia-pead/assets/rodape.png",
+  "./apps/frequencia-pead/holidays.json",
+  "./apps/frequencia-pead/icons/icon-192.png",
+  "./apps/frequencia-pead/index.html",
+  "./apps/frequencia-pead/style.css",
   "./apps/certidao/favicon.ico",
   "./apps/certidao/favicon.svg",
   "./apps/certidao/index.html",
@@ -19,6 +31,8 @@ const PRECACHE = [
   "./apps/rma/index.html",
   "./favicon.ico",
   "./favicon.svg",
+  "./icons/app-atestado-de-comparecimento.png",
+  "./icons/app-frequencia-pead.png",
   "./icons/app-certidao.png",
   "./icons/app-guia-de-remessa.png",
   "./icons/app-justificativa-de-ponto.png",
@@ -37,7 +51,7 @@ const PRECACHE = [
   "./index.html",
   "./manifest.webmanifest"
 ];
-const CDN_HOSTS = ["cdn.jsdelivr.net", "tessdata.projectnaptha.com", "unpkg.com"];
+const CDN_HOSTS = ["cdn.jsdelivr.net", "tessdata.projectnaptha.com", "unpkg.com", "fonts.googleapis.com", "fonts.gstatic.com"]; // + fontes do Google (Declaração de Comparecimento)
 const ROOT = new URL("./index.html", self.registration.scope).href;
 
 self.addEventListener("install", e => {
