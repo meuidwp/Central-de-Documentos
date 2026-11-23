@@ -1,6 +1,6 @@
 /* Service worker único da Central de Documentos.
    Ao publicar uma nova versão, mude o número em VERSION para renovar o cache nos aparelhos. */
-const VERSION = "v2";
+const VERSION = "v3";
 const CACHE = "central-" + VERSION;
 const RUNTIME = "central-runtime"; // bibliotecas de OCR (Justificativa de Ponto) e fontes do Google (Declaração de Comparecimento), guardadas na 1ª leitura
 const PRECACHE = [
@@ -55,7 +55,12 @@ const CDN_HOSTS = ["cdn.jsdelivr.net", "tessdata.projectnaptha.com", "unpkg.com"
 const ROOT = new URL("./index.html", self.registration.scope).href;
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
+  // Guarda cada arquivo separadamente: se algum faltar no servidor, a instalação não falha e o resto continua funcionando
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => Promise.allSettled(PRECACHE.map(f => c.add(f))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", e => {
